@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Projet Mobile</string>
+    <string name="welcome">Bienvenue sur cette appli !</string>
+    <string name="vote">Votez pour le plus beau prénom !</string>
+    <string name="start">Commencer</string>
+    <string name="databasesuccess">La base de donnée a été chargée avec succès</string>
+    <string name="databaseerror">Un problème est survenu avec la base de donnée, veuillez contacter la développeuse de cette application pour plus d\'information</string>
+    <string name="firstname">Un magnifique prénom…</string>
+    <string name="yourname">Votre nom…</string>
+    <string name="validate">Valider</string>
+    <string name="list">Liste des prénoms</string>
+    <string name="add">Ajouter un prénom</string>
+    <string name="requester">Dépositaire du prénom : </string>
+    <string name="edit">Modifier</string>
+    <string name="delete">Supprimer</string>
+</resources>

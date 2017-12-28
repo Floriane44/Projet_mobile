@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/showPrenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:textColor="@android:color/black"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        tools:text="Prénom" />
+
+    <TextView
+        android:id="@+id/showRequester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showPrenom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:text="@string/requester" />
+
+    <Button
+        android:id="@+id/like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/showPrenom"
+        android:layout_toStartOf="@+id/showPrenom"
+        android:drawableLeft="@drawable/poucevert"
+        android:onClick="likeOnClick" />
+
+    <Button
+        android:id="@+id/dislike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/like"
+        android:layout_toEndOf="@+id/showPrenom"
+        android:layout_toRightOf="@+id/showPrenom"
+        android:drawableLeft="@drawable/poucerouge"
+        android:onClick="dislikeOnClick" />
+
+    <Button
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="86dp"
+        android:onClick="editOnClick"
+        android:text="@string/edit" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:onClick="deleteOnClick"
+        android:text="@string/delete" />
+</RelativeLayout>

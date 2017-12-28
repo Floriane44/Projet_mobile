@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mobile Project</string>
+    <string name="welcome">Welcome to this app!</string>
+    <string name="vote">Let\'s vote for the prettiest firstname!</string>
+    <string name="start">Start</string>
+    <string name="databasesuccess">The database charged successfully</string>
+    <string name="databaseerror">A problem occurred with the database</string>
+    <string name="firstname">A beautiful first name…</string>
+    <string name="yourname">Your name…</string>
+    <string name="validate">Validate</string>
+    <string name="list">List of first names</string>
+    <string name="add">Add a first name</string>
+    <string name="requester">Requester of this first name : </string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+</resources>
