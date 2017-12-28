@@ -66,22 +66,12 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
         public void display(final Prenom prenom){
             firstname.setText(prenom.getIntitule());
             requester.setText(prenom.getRequester());
-            /*show = new Button(context);
-            show.setId((int) prenom.getId());
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(55, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                params.addRule(RelativeLayout.ALIGN_PARENT_END);
-            }
-            params.addRule(RelativeLayout.ALIGN_BOTTOM);
-            show.setLayoutParams(params);
-            show.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_menu_view, 0, 0, 0);*/
+
             show.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent myIntent = new Intent(context, ShowOneActivity.class);
                     myIntent.putExtra("id", prenom.getId());
-                    Log.e("id", String.valueOf(prenom.getId()));
                     context.startActivity(myIntent);
                 }
             });

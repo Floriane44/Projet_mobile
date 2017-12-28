@@ -1,5 +1,6 @@
 package com.projet.florianepeltier.mobileproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -55,7 +56,9 @@ public class ShowOneActivity extends AppCompatActivity {
     }
 
     public void editOnClick(View view){
-
+        Intent myIntent = new Intent(ShowOneActivity.this, UpdateActivity.class);
+        myIntent.putExtra("id", prenom.getId());
+        startActivity(myIntent);
     }
 
     public void deleteOnClick(View view){
