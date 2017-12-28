@@ -33,6 +33,7 @@
         android:layout_toLeftOf="@+id/showPrenom"
         android:layout_toStartOf="@+id/showPrenom"
         android:drawableLeft="@drawable/poucevert"
+        android:drawableStart="@drawable/poucevert"
         android:onClick="likeOnClick" />
 
     <Button
@@ -43,25 +44,32 @@
         android:layout_toEndOf="@+id/showPrenom"
         android:layout_toRightOf="@+id/showPrenom"
         android:drawableLeft="@drawable/poucerouge"
+        android:drawableStart="@drawable/poucerouge"
         android:onClick="dislikeOnClick" />
 
     <Button
         android:id="@+id/edit"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="86dp"
+        android:background="@android:color/holo_green_light"
+        android:drawableLeft="@android:drawable/ic_menu_edit"
+        android:drawableStart="@android:drawable/ic_menu_edit"
         android:onClick="editOnClick"
         android:text="@string/edit" />
 
     <Button
         android:id="@+id/delete"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="23dp"
+        android:background="@android:color/holo_red_light"
+        android:drawableLeft="@android:drawable/ic_menu_delete"
+        android:drawableStart="@android:drawable/ic_menu_delete"
         android:onClick="deleteOnClick"
         android:text="@string/delete" />
 </RelativeLayout>

@@ -14,4 +14,6 @@
     <string name="requester">Dépositaire du prénom : </string>
     <string name="edit">Modifier</string>
     <string name="delete">Supprimer</string>
+    <string name="deleteFirstname">Supprimer un prénom</string>
+    <string name="confirmation">Êtes-vous sûr de vouloir supprimer ce prénom ?</string>
 </resources>
