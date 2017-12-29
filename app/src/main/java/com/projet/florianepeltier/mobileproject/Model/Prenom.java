@@ -1,4 +1,4 @@
-package com.projet.florianepeltier.mobileproject;
+package com.projet.florianepeltier.mobileproject.Model;
 
 /**
  * Created by root on 27/12/17.

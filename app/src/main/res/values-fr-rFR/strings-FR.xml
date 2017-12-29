@@ -16,4 +16,5 @@
     <string name="delete">Supprimer</string>
     <string name="deleteFirstname">Supprimer un prénom</string>
     <string name="confirmation">Êtes-vous sûr de vouloir supprimer ce prénom ?</string>
+    <string name="baby">Bébé</string>
 </resources>

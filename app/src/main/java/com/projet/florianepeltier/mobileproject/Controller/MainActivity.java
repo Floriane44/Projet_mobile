@@ -1,10 +1,11 @@
-package com.projet.florianepeltier.mobileproject;
+package com.projet.florianepeltier.mobileproject.Controller;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.projet.florianepeltier.mobileproject.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,4 +20,5 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, ShowAllActivity.class);
         startActivity(myIntent);
     }
+
 }

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink"
-    tools:context="com.projet.florianepeltier.mobileproject.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.projet.florianepeltier.mobileproject.Controller.MainActivity">
 
     <TextView
         android:id="@+id/welcome"
@@ -53,7 +53,8 @@
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="69dp"
-        app:srcCompat="@drawable/bebe" />
+        app:srcCompat="@drawable/bebe"
+        android:contentDescription="@string/baby" />
 
 
 </RelativeLayout>

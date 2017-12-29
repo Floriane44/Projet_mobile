@@ -1,16 +1,16 @@
-package com.projet.florianepeltier.mobileproject;
+package com.projet.florianepeltier.mobileproject.Controller;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.projet.florianepeltier.mobileproject.Model.Prenom;
+import com.projet.florianepeltier.mobileproject.Model.PrenomDAO;
+import com.projet.florianepeltier.mobileproject.R;
 
 import java.util.ArrayList;
 
@@ -23,12 +23,19 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
     public PrenomDAO row;
     public ArrayList<Prenom> list;
 
-    public ShowAllAdapter(Context context){
+    public interface PrenomLoader {
+        void load(long id);
+    }
+
+    private static PrenomLoader _prenomLoader;
+
+    public ShowAllAdapter(Context context, PrenomLoader prenomLoader){
         this.context = context;
         row = new PrenomDAO(context);
         list = new ArrayList<Prenom>();
         row.open();
         list = row.showAll();
+        _prenomLoader = prenomLoader;
     }
 
     @Override
@@ -49,10 +56,11 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
         return list.size();
     }
 
-    public class ShowAllViewHolder extends RecyclerView.ViewHolder {
+    public class ShowAllViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView firstname;
         private final TextView requester;
         private Button show;
+        private Prenom prenom;
 
         public ShowAllViewHolder(View itemView) {
             super(itemView);
@@ -64,17 +72,30 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
         }
 
         public void display(final Prenom prenom){
+            this.prenom = prenom;
             firstname.setText(prenom.getIntitule());
             requester.setText(prenom.getRequester());
 
             show.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent myIntent = new Intent(context, ShowOneActivity.class);
+                    /*Intent myIntent = new Intent(context, ShowOneActivity.class);
                     myIntent.putExtra("id", prenom.getId());
-                    context.startActivity(myIntent);
+                    context.startActivity(myIntent);*/
+                    _prenomLoader.load(prenom.getId());
                 }
             });
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            /*Log.e("click", "succeed");
+            Intent myIntent = new Intent(context, ShowOneActivity.class);
+            myIntent.putExtra("id", prenom.getId());
+            context.startActivity(myIntent);*/
+            _prenomLoader.load(prenom.getId());
         }
     }
 }

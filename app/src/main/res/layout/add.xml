@@ -7,17 +7,18 @@
 
     <EditText
         android:id="@+id/prenominput"
+        android:inputType="textPersonName|textCapWords"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
         android:ems="10"
-        android:hint="@string/firstname"
-        android:inputType="textPersonName" />
+        android:hint="@string/firstname" />
 
     <EditText
         android:id="@+id/requesterinput"
+        android:inputType="textPersonName|textCapWords"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/prenominput"
@@ -25,14 +26,14 @@
         android:layout_below="@+id/prenominput"
         android:layout_marginTop="31dp"
         android:ems="10"
-        android:hint="@string/yourname"
-        android:inputType="textPersonName" />
+        android:hint="@string/yourname" />
 
     <Button
         android:id="@+id/valid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/requesterinput"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
         android:text="@string/validate" />
 </RelativeLayout>

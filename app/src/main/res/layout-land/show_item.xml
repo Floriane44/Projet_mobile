@@ -19,9 +19,8 @@
         android:id="@+id/showRequester"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/showPrenom"
+        android:layout_above="@+id/dislike"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="@string/requester" />
 
@@ -29,9 +28,11 @@
         android:id="@+id/like"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/showPrenom"
-        android:layout_toStartOf="@+id/showPrenom"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
         android:drawableLeft="@drawable/poucevert"
         android:drawableStart="@drawable/poucevert" />
 
@@ -39,19 +40,22 @@
         android:id="@+id/dislike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/like"
-        android:layout_toEndOf="@+id/showPrenom"
-        android:layout_toRightOf="@+id/showPrenom"
+        android:layout_alignBaseline="@+id/like"
+        android:layout_alignBottom="@+id/like"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
         android:drawableLeft="@drawable/poucerouge"
         android:drawableStart="@drawable/poucerouge" />
 
     <Button
         android:id="@+id/edit"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="86dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/delete"
+        android:layout_alignStart="@+id/delete"
+        android:layout_below="@+id/dislike"
         android:background="@android:color/holo_green_light"
         android:drawableLeft="@android:drawable/ic_menu_edit"
         android:drawableStart="@android:drawable/ic_menu_edit"
@@ -60,7 +64,7 @@
     <Button
         android:id="@+id/delete"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="23dp"

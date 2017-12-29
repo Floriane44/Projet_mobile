@@ -1,4 +1,4 @@
-package com.projet.florianepeltier.mobileproject;
+package com.projet.florianepeltier.mobileproject.Model;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.projet.florianepeltier.mobileproject;
+package com.projet.florianepeltier.mobileproject.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.projet.florianepeltier.mobileproject.Model.Prenom;
+import com.projet.florianepeltier.mobileproject.Model.PrenomDAO;
+import com.projet.florianepeltier.mobileproject.R;
 
 /**
  * Created by root on 28/12/17.
