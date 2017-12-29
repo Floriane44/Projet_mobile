@@ -1,9 +1,17 @@
 package com.projet.florianepeltier.mobileproject.Controller;
 
+import android.app.Fragment;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.projet.florianepeltier.mobileproject.R;
 
@@ -50,7 +58,8 @@ public class ShowAllActivity extends AppCompatActivity implements ShowAllAdapter
 
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 1) getFragmentManager().popBackStack();
-        else super.onBackPressed();
+        /*if (getFragmentManager().getBackStackEntryCount() > 1) getFragmentManager().popBackStack();
+        else super.onBackPressed();*/
+        startActivity(new Intent(ShowAllActivity.this, MainActivity.class));
     }
 }

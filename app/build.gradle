@@ -36,4 +36,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:27.0.0'
     compile 'com.android.support:recyclerview-v7:27.0.0'
     implementation 'com.android.support:design:27.0.0'
+    compile 'com.github.wrdlbrnft:sorted-list-adapter:0.2.0.1'
 }

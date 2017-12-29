@@ -46,7 +46,8 @@ public class UpdateActivity extends AppCompatActivity {
                 prenom.setIntitule(firstname);
                 prenom.setRequester(requester);
                 row.update(prenom);
-                Intent myIntent = new Intent(UpdateActivity.this, ShowAllActivity.class);
+                Intent myIntent = new Intent(UpdateActivity.this, ShowOneActivity.class);
+                myIntent.putExtra("id", prenom.getId());
                 startActivity(myIntent);
             }
         });

@@ -1,10 +1,12 @@
 package com.projet.florianepeltier.mobileproject.Model;
 
+import com.github.wrdlbrnft.sortedlistadapter.SortedListAdapter;
+
 /**
  * Created by root on 27/12/17.
  */
 
-public class Prenom {
+public class Prenom implements SortedListAdapter.ViewModel {
     private long id;
     private String intitule;
     private String requester;
@@ -58,5 +60,24 @@ public class Prenom {
 
     public void setDislikes(long dislikes) {
         this.dislikes = dislikes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Prenom prenom = (Prenom) o;
+
+        if (id != prenom.id) return false;
+        return intitule != null ? intitule.equals(prenom.intitule) : prenom.intitule == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (intitule != null ? intitule.hashCode() : 0);
+        return result;
     }
 }

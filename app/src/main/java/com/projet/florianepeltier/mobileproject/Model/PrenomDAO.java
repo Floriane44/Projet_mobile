@@ -31,12 +31,20 @@ public class PrenomDAO extends DAOBase {
         super(pContext);
     }
 
-    public void add(String intitule, String requester) {
+    public Prenom add(String intitule, String requester) {
         ContentValues value = new ContentValues();
         value.put(INTITULE, intitule);
         value.put(REQUESTER, requester);
         mDb.insert(TABLE_NAME, null, value);
-        Log.e(mDb.toString(), mDb.getPath());
+
+        Cursor cursor = mDb.rawQuery("select * from " + TABLE_NAME + " ORDER BY _id DESC LIMIT 1", null);
+        cursor.moveToFirst();
+        long id = cursor.getLong(0);
+        long likes = cursor.getLong(3);
+        long dislikes = cursor.getLong(4);
+
+        Prenom m = new Prenom(id, intitule, requester, likes, dislikes);
+        return m;
     }
 
     /**

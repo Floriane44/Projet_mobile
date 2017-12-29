@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.projet.florianepeltier.mobileproject.Model.Prenom;
 import com.projet.florianepeltier.mobileproject.Model.PrenomDAO;
 import com.projet.florianepeltier.mobileproject.R;
 
@@ -17,6 +18,7 @@ import com.projet.florianepeltier.mobileproject.R;
 
 public class AddActivity extends AppCompatActivity {
     private PrenomDAO row;
+    private Prenom firstname;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,9 +38,10 @@ public class AddActivity extends AppCompatActivity {
 
                 row = new PrenomDAO(AddActivity.this);
                 row.open();
-                row.add(prenom, requester);
+                firstname = row.add(prenom, requester);
 
-                Intent myIntent = new Intent(AddActivity.this, ShowAllActivity.class);
+                Intent myIntent = new Intent(AddActivity.this, ShowOneActivity.class);
+                myIntent.putExtra("id", firstname.getId());
                 startActivity(myIntent);
             }
         });
