@@ -1,7 +1,6 @@
 package com.projet.florianepeltier.mobileproject.Controller;
 
 import android.app.Fragment;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,11 +8,9 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,10 +35,9 @@ import java.util.List;
  */
 
 public class ShowAllFragment extends Fragment implements SearchView.OnQueryTextListener {
-    DatabaseHandler db;
-    private PrenomDAO row;
     private ShowAllAdapter _adapter;
 
+    // Tri des prénoms par ordre alphabétique
     private static final Comparator<Prenom> ALPHABETICAL_COMPARATOR = new Comparator<Prenom>() {
         @Override
         public int compare(Prenom a, Prenom b) {
@@ -72,13 +68,13 @@ public class ShowAllFragment extends Fragment implements SearchView.OnQueryTextL
         _adapter = new ShowAllAdapter(getActivity(), (ShowAllAdapter.PrenomLoader) getActivity(), ALPHABETICAL_COMPARATOR);
         rv.setAdapter(_adapter);
 
-        db = new DatabaseHandler(getActivity(), "prenom", null, 1);
-        if (doesDatabaseExist(getActivity(), "prenom") && checkDataBase()){
+        DatabaseHandler db = new DatabaseHandler(getActivity(), "prenom", null, 1);
+        if (doesDatabaseExist(getActivity()) && checkDataBase()){
             Toast.makeText(getActivity(), R.string.databasesuccess, Toast.LENGTH_SHORT).show();
         }
         else Toast.makeText(getActivity(), R.string.databaseerror, Toast.LENGTH_LONG).show();
 
-        row = new PrenomDAO(getActivity());
+        PrenomDAO row = new PrenomDAO(getActivity());
         row.open();
         prenoms = row.showAll();
         _adapter.add(prenoms);
@@ -95,16 +91,17 @@ public class ShowAllFragment extends Fragment implements SearchView.OnQueryTextL
     public boolean checkDataBase() {
         SQLiteDatabase checkDB = null;
         try {
-            checkDB = SQLiteDatabase.openDatabase("/data/data/com.projet.florianepeltier.mobileproject/databases/prenom", null, SQLiteDatabase.OPEN_READONLY);
+            checkDB = SQLiteDatabase.openDatabase("/data/data/com.projet.florianepeltier.mobileproject/databases/prenom",
+                    null, SQLiteDatabase.OPEN_READONLY);
             checkDB.close();
         } catch (SQLiteException e) {
-            // base de données n'existe pas.
+            // La base de données n'existe pas.
         }
         return checkDB != null;
     }
 
-    private static boolean doesDatabaseExist(Context context, String dbName) {
-        File dbFile = context.getDatabasePath(dbName);
+    private static boolean doesDatabaseExist(Context context) {
+        File dbFile = context.getDatabasePath("prenom");
         return dbFile.exists();
     }
 

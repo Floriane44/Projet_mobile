@@ -3,7 +3,6 @@ package com.projet.florianepeltier.mobileproject.Model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -12,12 +11,12 @@ import java.util.ArrayList;
  */
 
 public class PrenomDAO extends DAOBase {
-    public static final String TABLE_NAME = "Prenom";
-    public static final String ID = "_id";
-    public static final String INTITULE = "intitule";
-    public static final String REQUESTER = "requester";
-    public static final String LIKES = "likes";
-    public static final String DISLIKES = "dislikes";
+    private static final String TABLE_NAME = "Prenom";
+    private static final String ID = "_id";
+    private static final String INTITULE = "intitule";
+    private static final String REQUESTER = "requester";
+    private static final String LIKES = "likes";
+    private static final String DISLIKES = "dislikes";
 
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" +
             ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -31,6 +30,7 @@ public class PrenomDAO extends DAOBase {
         super(pContext);
     }
 
+    // Ajouter un prénom à la base, retourne le prénom nouvellement créé
     public Prenom add(String intitule, String requester) {
         ContentValues value = new ContentValues();
         value.put(INTITULE, intitule);
@@ -44,6 +44,7 @@ public class PrenomDAO extends DAOBase {
         long dislikes = cursor.getLong(4);
 
         Prenom m = new Prenom(id, intitule, requester, likes, dislikes);
+        cursor.close();
         return m;
     }
 
@@ -55,7 +56,7 @@ public class PrenomDAO extends DAOBase {
     }
 
     /**
-     * @param m le prénom modifié
+     * @param m le prénom à modifier
      */
     public void update(Prenom m) {
         ContentValues value = new ContentValues();
@@ -65,7 +66,7 @@ public class PrenomDAO extends DAOBase {
     }
 
     /**
-     * @param m le prénom modifié
+     * @param m le prénom à liker
      */
     public void increaseLikes(Prenom m){
         ContentValues value = new ContentValues();
@@ -75,7 +76,7 @@ public class PrenomDAO extends DAOBase {
     }
 
     /**
-     * @param m le prénom modifié
+     * @param m le prénom à disliker
      */
     public void increaseDislikes(Prenom m){
         ContentValues value = new ContentValues();
@@ -103,6 +104,7 @@ public class PrenomDAO extends DAOBase {
         return m;
     }
 
+    // Récupérer tous les prénoms de la base, les assigner dans une ArrayList
     public ArrayList<Prenom> showAll() {
 
         ArrayList<Prenom> listSelect = new ArrayList<Prenom>();

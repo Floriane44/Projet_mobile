@@ -112,7 +112,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String PRENOM_TABLE_DROP = "DROP TABLE IF EXISTS " + PRENOM_TABLE_NAME + ";";
 
-
     public DatabaseHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }

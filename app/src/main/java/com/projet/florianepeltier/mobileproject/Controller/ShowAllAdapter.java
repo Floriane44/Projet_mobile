@@ -10,10 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.projet.florianepeltier.mobileproject.Model.Prenom;
-import com.projet.florianepeltier.mobileproject.Model.PrenomDAO;
 import com.projet.florianepeltier.mobileproject.R;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -22,9 +20,7 @@ import java.util.List;
  */
 
 public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllViewHolder>  {
-    public Context context;
-    public PrenomDAO row;
-    public ArrayList<Prenom> list;
+    private Context context;
 
     private final SortedList<Prenom> mSortedList = new SortedList<>(Prenom.class, new SortedList.Callback<Prenom>() {
 
@@ -64,7 +60,6 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
         }
     });
 
-    private final LayoutInflater mInflater;
     private final Comparator<Prenom> mComparator;
 
     public interface PrenomLoader {
@@ -73,14 +68,10 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
 
     private static PrenomLoader _prenomLoader;
 
-    public ShowAllAdapter(Context context, PrenomLoader prenomLoader, Comparator<Prenom> comparator){
+    ShowAllAdapter(Context context, PrenomLoader prenomLoader, Comparator<Prenom> comparator){
         this.context = context;
-        mInflater = LayoutInflater.from(context);
+        LayoutInflater mInflater = LayoutInflater.from(context);
         mComparator = comparator;
-        row = new PrenomDAO(context);
-        list = new ArrayList<Prenom>();
-        row.open();
-        list = row.showAll();
         _prenomLoader = prenomLoader;
     }
 
@@ -93,14 +84,12 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
 
     @Override
     public void onBindViewHolder(ShowAllViewHolder holder, int position) {
-        //Prenom prenom = list.get(position);
         Prenom prenom = mSortedList.get(position);
         holder.display(prenom);
     }
 
     @Override
     public int getItemCount() {
-        //return list.size();
         return mSortedList.size();
     }
 
@@ -108,23 +97,11 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
         mSortedList.add(prenom);
     }
 
-    public void remove(Prenom prenom) {
-        mSortedList.remove(prenom);
-    }
-
     public void add(List<Prenom> prenoms) {
         mSortedList.addAll(prenoms);
     }
 
-    public void remove(List<Prenom> prenoms) {
-        mSortedList.beginBatchedUpdates();
-        for (Prenom prenom : prenoms) {
-            mSortedList.remove(prenom);
-        }
-        mSortedList.endBatchedUpdates();
-    }
-
-    public void replaceAll(List<Prenom> prenoms) {
+    void replaceAll(List<Prenom> prenoms) {
         mSortedList.beginBatchedUpdates();
         for (int i = mSortedList.size() - 1; i >= 0; i--) {
             final Prenom prenom = mSortedList.get(i);
@@ -142,7 +119,7 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
         private Button show;
         private Prenom prenom;
 
-        public ShowAllViewHolder(View itemView) {
+        ShowAllViewHolder(View itemView) {
             super(itemView);
 
             firstname = ((TextView) itemView.findViewById(R.id.intitule));
@@ -151,10 +128,11 @@ public class ShowAllAdapter extends RecyclerView.Adapter<ShowAllAdapter.ShowAllV
 
         }
 
-        public void display(final Prenom prenom){
+        void display(final Prenom prenom){
             this.prenom = prenom;
             firstname.setText(prenom.getIntitule());
-            requester.setText(context.getResources().getString(R.string.requester) + " " + prenom.getRequester());
+            String text = context.getResources().getString(R.string.requester) + " " + prenom.getRequester();
+            requester.setText(text);
 
             show.setOnClickListener(new View.OnClickListener() {
                 @Override

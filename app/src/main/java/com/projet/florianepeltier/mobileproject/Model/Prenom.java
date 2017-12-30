@@ -13,7 +13,7 @@ public class Prenom implements SortedListAdapter.ViewModel {
     private long likes;
     private long dislikes;
 
-    public Prenom(long id, String intitule, String requester, long likes, long dislikes){
+    Prenom(long id, String intitule, String requester, long likes, long dislikes){
         super();
         this.id = id;
         this.intitule = intitule;
@@ -50,7 +50,7 @@ public class Prenom implements SortedListAdapter.ViewModel {
         return likes;
     }
 
-    public void setLikes(long likes) {
+    void setLikes(long likes) {
         this.likes = likes;
     }
 
@@ -58,7 +58,7 @@ public class Prenom implements SortedListAdapter.ViewModel {
         return dislikes;
     }
 
-    public void setDislikes(long dislikes) {
+    void setDislikes(long dislikes) {
         this.dislikes = dislikes;
     }
 
@@ -69,9 +69,7 @@ public class Prenom implements SortedListAdapter.ViewModel {
 
         Prenom prenom = (Prenom) o;
 
-        if (id != prenom.id) return false;
-        return intitule != null ? intitule.equals(prenom.intitule) : prenom.intitule == null;
-
+        return id == prenom.id && (intitule != null ? intitule.equals(prenom.intitule) : prenom.intitule == null);
     }
 
     @Override

@@ -41,14 +41,22 @@ public class UpdateActivity extends AppCompatActivity {
         valid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String firstname = prenomInput.getText().toString();
-                String requester = requesterInput.getText().toString();
-                prenom.setIntitule(firstname);
-                prenom.setRequester(requester);
-                row.update(prenom);
-                Intent myIntent = new Intent(UpdateActivity.this, ShowOneActivity.class);
-                myIntent.putExtra("id", prenom.getId());
-                startActivity(myIntent);
+                if (prenomInput.getText().toString().length() == 0){
+                    prenomInput.setError(getResources().getString(R.string.requiredF));
+                }
+                else if(requesterInput.getText().toString().length() == 0) {
+                    requesterInput.setError(getResources().getString(R.string.requiredY));
+                }
+                else {
+                    String firstname = prenomInput.getText().toString();
+                    String requester = requesterInput.getText().toString();
+                    prenom.setIntitule(firstname);
+                    prenom.setRequester(requester);
+                    row.update(prenom);
+                    Intent myIntent = new Intent(UpdateActivity.this, ShowOneActivity.class);
+                    myIntent.putExtra("id", prenom.getId());
+                    startActivity(myIntent);
+                }
             }
         });
     }

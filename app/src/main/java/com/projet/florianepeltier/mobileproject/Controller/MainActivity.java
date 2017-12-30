@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startOnClick(View view){
-        Intent myIntent = new Intent(MainActivity.this, ShowAllActivity.class);
-        startActivity(myIntent);
+        // Lancement de ShowAllActivity
+        startActivity(new Intent(MainActivity.this, ShowAllActivity.class));
     }
 
 }

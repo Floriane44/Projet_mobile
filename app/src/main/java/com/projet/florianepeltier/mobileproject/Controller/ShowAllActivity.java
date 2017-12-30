@@ -1,17 +1,9 @@
 package com.projet.florianepeltier.mobileproject.Controller;
 
-import android.app.Fragment;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 
 import com.projet.florianepeltier.mobileproject.R;
 
@@ -27,9 +19,11 @@ public class ShowAllActivity extends AppCompatActivity implements ShowAllAdapter
         setContentView(R.layout.show_all);
         setTitle(R.string.list);
 
+        // Empêche l'overlap de fragment à la rotation d'un écran
         if (findViewById(R.id.listfragment) != null) {
-            if (savedInstanceState != null) return; //empêche l'overlap de fragment à la rotation d'un écran
+            if (savedInstanceState != null) return;
 
+            // Lancement de ShowAllFragment
             getFragmentManager()
                     .beginTransaction()
                     .add(R.id.listfragment, new ShowAllFragment())
@@ -38,6 +32,8 @@ public class ShowAllActivity extends AppCompatActivity implements ShowAllAdapter
         }
     }
 
+    // Selon le fait que le FrameLayout "prenomfragment" existe ou non (=selon que l'on soit sur tablette ou sur smartphone)
+    // on lance directement ShowOneFragment ou on lance une nouvelle activité
     @Override
     public void load(long id) {
         if (findViewById(R.id.prenomfragment) != null){
@@ -56,6 +52,7 @@ public class ShowAllActivity extends AppCompatActivity implements ShowAllAdapter
         }
     }
 
+    // Si on appuie sur le bouton retour, on relance le menu de départ
     @Override
     public void onBackPressed() {
         /*if (getFragmentManager().getBackStackEntryCount() > 1) getFragmentManager().popBackStack();

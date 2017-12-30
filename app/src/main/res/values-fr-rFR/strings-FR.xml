@@ -18,4 +18,6 @@
     <string name="confirmation">Êtes-vous sûr de vouloir supprimer ce prénom ?</string>
     <string name="baby">Bébé</string>
     <string name="searchF">Rechercher un prénom…</string>
+    <string name="requiredF">Vous devez renseigner un prénom !</string>
+    <string name="requiredY">Vous devez renseigner votre nom !</string>
 </resources>

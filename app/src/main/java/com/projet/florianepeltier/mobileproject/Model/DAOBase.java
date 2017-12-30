@@ -9,22 +9,22 @@ import android.database.sqlite.SQLiteDatabase;
 
 public abstract class DAOBase {
 
-    protected final static int VERSION = 3;
+    // Version de l'application
+    private final static int VERSION = 3;
 
     // Le nom du fichier qui représente ma base
-    protected final static String NOM = "database.db";
+    private final static String NOM = "database.db";
 
-    protected SQLiteDatabase mDb = null;
-    protected DatabaseHandler mHandler = null;
+    SQLiteDatabase mDb = null;
+    private DatabaseHandler mHandler = null;
 
-    public DAOBase(Context pContext) {
+    DAOBase(Context pContext) {
         this.mHandler = new DatabaseHandler(pContext, NOM, null, VERSION);
     }
 
-    public SQLiteDatabase open() {
+    public void open() {
         // Pas besoin de fermer la dernière base puisque getWritableDatabase s'en charge
         mDb = mHandler.getWritableDatabase();
-        return mDb;
     }
 
     public void close() {

@@ -33,16 +33,24 @@ public class AddActivity extends AppCompatActivity {
                 EditText prenomInput = (EditText) findViewById(R.id.prenominput);
                 EditText requesterInput = (EditText) findViewById(R.id.requesterinput);
 
-                String prenom = prenomInput.getText().toString();
-                String requester = requesterInput.getText().toString();
+                if (prenomInput.getText().toString().length() == 0){
+                    prenomInput.setError(getResources().getString(R.string.requiredF));
+                }
+                else if(requesterInput.getText().toString().length() == 0) {
+                    requesterInput.setError(getResources().getString(R.string.requiredY));
+                }
+                else {
+                    String prenom = prenomInput.getText().toString();
+                    String requester = requesterInput.getText().toString();
 
-                row = new PrenomDAO(AddActivity.this);
-                row.open();
-                firstname = row.add(prenom, requester);
+                    row = new PrenomDAO(AddActivity.this);
+                    row.open();
+                    firstname = row.add(prenom, requester);
 
-                Intent myIntent = new Intent(AddActivity.this, ShowOneActivity.class);
-                myIntent.putExtra("id", firstname.getId());
-                startActivity(myIntent);
+                    Intent myIntent = new Intent(AddActivity.this, ShowOneActivity.class);
+                    myIntent.putExtra("id", firstname.getId());
+                    startActivity(myIntent);
+                }
             }
         });
     }

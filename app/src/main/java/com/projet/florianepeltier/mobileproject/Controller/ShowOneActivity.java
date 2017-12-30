@@ -14,7 +14,6 @@ import com.projet.florianepeltier.mobileproject.Model.PrenomDAO;
  */
 
 public class ShowOneActivity extends AppCompatActivity {
-    private long id;
     private PrenomDAO row;
     private Prenom prenom;
     private Button likes;
@@ -24,7 +23,7 @@ public class ShowOneActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        id = getIntent().getLongExtra("id", 0);
+        long id = getIntent().getLongExtra("id", 0);
         ShowOneFragment fragment = ShowOneFragment.create(id);
 
         getFragmentManager()

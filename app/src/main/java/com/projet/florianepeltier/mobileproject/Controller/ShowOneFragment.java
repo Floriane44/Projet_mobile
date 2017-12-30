@@ -27,8 +27,6 @@ public class ShowOneFragment extends Fragment {
     private Prenom prenom;
     private Button likes;
     private Button dislikes;
-    private Button update;
-    private Button delete;
 
     public static ShowOneFragment create(long id) {
         Bundle args = new Bundle();
@@ -65,7 +63,10 @@ public class ShowOneFragment extends Fragment {
         dislikes = (Button) view.findViewById(R.id.dislike);
 
         firstname.setText(prenom.getIntitule());
-        requester.setText(getResources().getString(R.string.requester) + " " + prenom.getRequester());
+
+        String text = getResources().getString(R.string.requester) + " " + prenom.getRequester();
+        requester.setText(text);
+
         likes.setText(String.valueOf(prenom.getLikes()));
         dislikes.setText(String.valueOf(prenom.getDislikes()));
 
@@ -84,8 +85,8 @@ public class ShowOneFragment extends Fragment {
             }
         });
 
-        update = (Button) view.findViewById(R.id.edit);
-        delete = (Button) view.findViewById(R.id.delete);
+        Button update = (Button) view.findViewById(R.id.edit);
+        Button delete = (Button) view.findViewById(R.id.delete);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +115,7 @@ public class ShowOneFragment extends Fragment {
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
+                                // ne rien faire
                             }
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
